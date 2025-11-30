@@ -18,10 +18,11 @@
     transform: rotate(-0.5deg);
     // filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.1));
     z-index: -1;
+    animation: wobble 6s ease-in-out infinite;
   }
 
   a {
-    color: $text-color;
+    color: $background-color;
     text-decoration: none;
     border-radius: $input-radius;
     padding: 6px 9px;
@@ -38,10 +39,7 @@
         border-radius 0.6s ease, filter 0.6s ease;
 
       &:hover {
-        background-color: color.adjust(
-          $color: $text-color,
-          $lightness: 10%
-        );
+        background-color: color.adjust($color: $text-color, $lightness: 10%);
         filter: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
           drop-shadow(0 0 20px rgba(9, 173, 238, 0.4));
       }
@@ -61,5 +59,21 @@
       display: flex;
       gap: 15px;
     }
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-0.5deg);
+  }
+  25% {
+    transform: rotate(-0.8deg) translateX(1px);
+  }
+  50% {
+    transform: rotate(-0.2deg) translateX(-1px);
+  }
+  75% {
+    transform: rotate(-0.7deg) translateX(0.5px);
   }
 }
