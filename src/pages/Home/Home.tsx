@@ -1,7 +1,10 @@
 import styles from "./Home.module.scss";
 import bannerImage from "../../assets/portrait.png";
+import { useParallax } from "../../hooks/useParallax";
 
 const Home = () => {
+  const bannerBackgroundRef = useParallax(0.2);
+
   return (
     <div className={styles.home}>
       <div className={`banner ${styles.banner}`}>
@@ -12,7 +15,10 @@ const Home = () => {
             • React)
           </p>
         </div>
-        <div className={styles.bannerPortraitWrapper}>
+        <div
+          ref={bannerBackgroundRef}
+          className={`.bannerBackground ${styles.bannerPortraitWrapper}`}
+        >
           <img
             src={bannerImage}
             className={styles.bannerPortrait}
