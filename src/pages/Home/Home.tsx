@@ -1,10 +1,15 @@
-import './Home.module.scss';
+import styles from "./Home.module.scss";
 
 const Home = () => {
   return (
-    <div className="home">
-      <h1>Welcome to My Portfolio</h1>
-      <p>This is the home page content.</p>
+    <div className={styles.home}>
+      <div className={`banner ${styles.banner}`}>
+        <h1>Milos Ristic</h1>
+        <p>Full Stack Developer (PHP • .NET • React)</p>
+      </div>
+      <div className={`content ${styles.content}`}>
+        <h2>Welcome to my portfolio!</h2>
+      </div>
     </div>
   );
 };

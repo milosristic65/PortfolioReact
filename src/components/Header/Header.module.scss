@@ -1,1 +1,77 @@
-@use "../../styles/variables";
+@use "../../styles/variables" as *;
+@use "sass:color";
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -5px;
+    right: -5px;
+    bottom: -10px;
+    background-color: $primary-color;
+    transform: rotate(-0.5deg);
+    z-index: -1;
+    animation: wobble 8s ease-in-out infinite;
+  }
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+    border-radius: $input-radius;
+    padding: 6px 9px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &.contactButton {
+      background-color: $text-color;
+      color: $background-color;
+      transition: background-color 0.6s ease, color 0.6s ease,
+        border-radius 0.6s ease, filter 0.6s ease;
+
+      &:hover {
+        background-color: color.adjust($color: $background-color, $lightness: 110%);
+        filter: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
+          drop-shadow(0 0 20px rgba(9, 173, 238, 0.4));
+      }
+    }
+  }
+
+  .headerContent {
+    max-width: $header-width;
+    height: $header-height;
+    padding: 0 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav {
+      display: flex;
+      gap: 15px;
+    }
+  }
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-0.5deg);
+  }
+  25% {
+    transform: rotate(-0.8deg) translateX(1px);
+  }
+  50% {
+    transform: rotate(-0.2deg) translateX(-1px);
+  }
+  75% {
+    transform: rotate(-0.7deg) translateX(0.5px);
+  }
+}

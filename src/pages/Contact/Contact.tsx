@@ -1,10 +1,12 @@
-import './Contact.module.scss';
+import styles from "./Contact.module.scss";
 
 const Contact = () => {
   return (
-    <div className="contact">
-      <h1>Contact</h1>
-      <p>Contact me.</p>
+    <div className={styles.contact}>
+      <div className={`content ${styles.content}`}>
+        <h1>Contact</h1>
+        <p>Contact me.</p>
+      </div>
     </div>
   );
 };
