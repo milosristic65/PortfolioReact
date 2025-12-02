@@ -28,7 +28,7 @@
     top: 0;
     right: 0;
     height: calc(100%);
-    z-index: 0;
+    z-index: 1;
 
     &::before {
       content: "";
@@ -46,6 +46,22 @@
       top: 35px;
       height: 100%;
       z-index: 1;
+    }
+  }
+
+  .bannerLogos {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 0;
+
+    img {
+      width: 250px;
+      filter: grayscale(1) brightness(0) invert(1);
+      opacity: 0.05;
     }
   }
 }

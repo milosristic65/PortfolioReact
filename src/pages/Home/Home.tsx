@@ -1,9 +1,14 @@
 import styles from "./Home.module.scss";
-import bannerImage from "../../assets/portrait.png";
+import bannerImage from "../../assets/portrait_blurred.png";
+import reactLogo from "../../assets/react.svg";
+import dotnetLogo from "../../assets/dotnet.svg";
+import phpLogo from "../../assets/php.svg";
+import drupalLogo from "../../assets/drupal.svg";
 import { useParallax } from "../../hooks/useParallax";
 
 const Home = () => {
   const bannerBackgroundRef = useParallax(0.2);
+  const bannerLogosRef = useParallax(0.2);
 
   return (
     <div className={styles.home}>
@@ -17,7 +22,7 @@ const Home = () => {
         </div>
         <div
           ref={bannerBackgroundRef}
-          className={`.bannerBackground ${styles.bannerPortraitWrapper}`}
+          className={`${styles.bannerPortraitWrapper}`}
         >
           <img
             src={bannerImage}
@@ -25,9 +30,15 @@ const Home = () => {
             alt="Milos Ristic portrait"
           />
         </div>
+        <div ref={bannerLogosRef} className={styles.bannerLogos}>
+          <img src={reactLogo} alt="React Logo" />
+          <img src={phpLogo} alt="PHP Logo" />
+          <img src={drupalLogo} alt="Drupal Logo" />
+          <img src={dotnetLogo} alt="Dotnet Logo" />
+        </div>
       </div>
       <div className={`content ${styles.content}`}>
-        <h2>Welcome to my portfolio!</h2>
+        <h2>Something About Me</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
           architecto eum similique temporibus aut id nulla! Architecto dolores
