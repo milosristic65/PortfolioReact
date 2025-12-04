@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 
-import bannerImage from "../../assets/portrait_contrast.png";
+import bannerImage from "../../assets/portrait_color.png";
 import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
