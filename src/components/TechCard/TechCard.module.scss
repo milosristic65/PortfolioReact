@@ -8,11 +8,12 @@ $cardTransiton: 0.4s;
   background-color: #f9f9f9;
   border-radius: $input-radius;
   text-align: left;
-  width: 280px;
-  height: 280px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
-  filter: drop-shadow(0 2px 8px rgba(13, 2, 73, 0.1));
+  filter: drop-shadow(0 2px 8px rgba(13, 2, 73, 0.2));
   cursor: pointer;
+  transition: filter $cardTransiton ease-in-out;
 
   h3 {
     position: relative;
@@ -54,16 +55,56 @@ $cardTransiton: 0.4s;
       box-shadow $cardTransiton ease-in-out;
   }
 
-  &:hover {
-    img {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.6);
-    }
+  .textIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 1;
 
-    .cardContent {
-      transform: scale(1);
-      box-shadow: 0 4px 64px rgba(2, 14, 70, 0.1);
-      opacity: 1;
+    .textLine {
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $text-color;
+      opacity: 0.7;
+      transition: width 0.2s ease-in-out;
+
+      &:nth-child(3) {
+        width: 40%;
+      }
     }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      filter: drop-shadow(0 2px 32px rgba(35, 6, 202, 0.445));
+
+      img {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+      }
+
+      .cardContent {
+        transform: scale(1);
+        box-shadow: 0 4px 64px rgba(2, 70, 42, 0.3);
+        opacity: 1;
+      }
+
+      .textIcon {
+        .textLine:nth-child(3) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    width: 100px;
+    height: 100px;
   }
 }

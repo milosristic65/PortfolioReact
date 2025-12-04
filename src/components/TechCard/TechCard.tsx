@@ -1,5 +1,5 @@
 import styles from "./TechCard.module.scss";
-import "./filterColors.css";
+import "./filterColors.scss";
 import { TechCardColor } from "./types.ts";
 
 interface TechCardProps {
@@ -17,6 +17,11 @@ function TechCard({ title, description, logo, color }: TechCardProps) {
         <p>{description}</p>
       </div>
       <img className={color} src={logo} alt={title} />
+      <div className={styles.textIcon}>
+        <div className={styles.textLine}></div>
+        <div className={styles.textLine}></div>
+        <div className={styles.textLine}></div>
+      </div>
     </div>
   );
 }

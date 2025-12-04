@@ -1,16 +1,20 @@
 import styles from "./Home.module.scss";
+
 import bannerImage from "../../assets/portrait_contrast.png";
-import reactLogo from "../../assets/react.svg";
-import dotnetLogo from "../../assets/dotnet.svg";
-import phpLogo from "../../assets/php.svg";
-import drupalLogo from "../../assets/drupal.svg";
-import { useParallax } from "../../hooks/useParallax";
+import reactLogo from "../../assets/TechStack/react.svg";
+import dotnetLogo from "../../assets/TechStack/dotnet.svg";
+import phpLogo from "../../assets/TechStack/php.svg";
+import drupalLogo from "../../assets/TechStack/drupal.svg";
+import mysqlLogo from "../../assets/TechStack/mysql.svg";
+import sqlserverLogo from "../../assets/TechStack/sqlserver.svg";
+
 import TechCard from "../../components/TechCard/TechCard";
+import { useParallax } from "../../hooks/useParallax";
 import { TechCardColor } from "../../components/TechCard/types";
 
 const Home = () => {
   const bannerBackgroundRef = useParallax(0.2);
-  const bannerLogosRef = useParallax(0.2);
+  const bannerLogosRef = useParallax(0.16);
 
   return (
     <div className={styles.home}>
@@ -78,6 +82,16 @@ const Home = () => {
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               logo={dotnetLogo}
               color={TechCardColor.GREEN}
+            />
+            <TechCard
+              title="MySQL"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={mysqlLogo}
+            />
+            <TechCard
+              title="Microsoft SQL Server"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={sqlserverLogo}
             />
           </div>
         </section>

@@ -1,0 +1,26 @@
+.cyan {
+  filter: brightness(0) saturate(100%) invert(51%) sepia(50%) saturate(7061%)
+    hue-rotate(188deg) brightness(103%) contrast(106%);
+}
+.blue {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(94%) saturate(5899%)
+    hue-rotate(237deg) brightness(101%) contrast(122%);
+}
+.red {
+  img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(83%) saturate(7483%)
+      hue-rotate(357deg) brightness(102%) contrast(107%);
+  }
+}
+.green {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(72%) saturate(3293%)
+    hue-rotate(85deg) brightness(95%) contrast(101%);
+}
+.purple {
+  filter: brightness(0) saturate(100%) invert(30%) sepia(44%) saturate(2411%)
+    hue-rotate(254deg) brightness(95%) contrast(101%);
+}
+.orange {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(83%) saturate(4946%)
+    hue-rotate(11deg) brightness(101%) contrast(101%);
+}
