@@ -2,6 +2,7 @@ import styles from "./Home.module.scss";
 
 import bannerImage from "../../assets/portrait_color.png";
 import reactLogo from "../../assets/TechStack/react.svg";
+import jqueryLogo from "../../assets/TechStack/jquery.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
 import drupalLogo from "../../assets/TechStack/drupal.svg";
@@ -76,6 +77,12 @@ const Home = () => {
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               logo={reactLogo}
               color={TechCardColor.CYAN}
+            />
+            <TechCard
+              title="jQuery"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={jqueryLogo}
+              color={TechCardColor.BLUE}
             />
             <TechCard
               title=".NET"
