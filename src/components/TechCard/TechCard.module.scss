@@ -1,7 +1,7 @@
 @use "../../styles/variables" as *;
 @use "sass:color";
 
-$cardTransiton: 0.4s;
+$cardTransiton: 0.3s;
 
 .techCard {
   position: relative;
@@ -11,9 +11,10 @@ $cardTransiton: 0.4s;
   width: 250px;
   height: 250px;
   overflow: hidden;
-  filter: drop-shadow(0 2px 8px rgba(13, 2, 73, 0.2));
+  background-color: $accent-color;
+  box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
   cursor: pointer;
-  transition: filter $cardTransiton ease-in-out;
+  transition: box-shadow $cardTransiton ease-in-out;
 
   h3 {
     position: relative;
@@ -82,7 +83,7 @@ $cardTransiton: 0.4s;
 
   @media (hover: hover) {
     &:hover {
-      filter: drop-shadow(0 2px 32px rgba(35, 6, 202, 0.445));
+      box-shadow: 0 2px 32px rgba(35, 6, 202, 0.445);
 
       img {
         opacity: 0;

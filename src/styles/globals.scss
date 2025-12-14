@@ -47,7 +47,7 @@ button,
   border-radius: $input-radius;
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: color.adjust($color: $primary-color, $lightness: -15%);

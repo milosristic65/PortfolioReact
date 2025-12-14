@@ -16,7 +16,7 @@ export const experiences: Experience[] = [
     company: "Fermicoding Internet Engineering",
     position: "Full Stack Developer",
     description:
-      "Working on Drupal 10/11 projects, mainly on an e-commerce project. I build custom modules, configure multilingual features, integrate APIs (including Stripe and PayPal), fix Drupal bugs, and maintain site structures (taxonomies, forms, content types). I also handle Twig/jQuery/SCSS frontend, cron jobs, and email logic for when emails are sent, also creating the email templates in Twig.",
+      "Working on Drupal 10/11 projects, mainly on an e-commerce project. I build custom modules, configure multilingual features, integrate APIs (including Stripe and PayPal), fix Drupal bugs, and maintain site structures (taxonomies, forms, content types). I also handle Twig/jQuery/SCSS frontend, cron jobs, and email logic for when emails are sent, also creating email templates in Twig.",
     duration: {
       start: new Date("2025-02-05"),
       end: null,
@@ -42,5 +42,5 @@ export const experiences: Experience[] = [
       start: new Date("2023-07-24"),
       end: new Date("2023-07-28"),
     },
-  }
+  },
 ];

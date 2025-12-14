@@ -1,4 +1,6 @@
 import styles from "./Home.module.scss";
+import { useState } from "react";
+import { motion } from "motion/react";
 
 import bannerImage from "../../assets/potrait_stylised.png";
 import reactLogo from "../../assets/TechStack/react.svg";
@@ -14,17 +16,25 @@ import { useParallax } from "../../hooks/useParallax";
 import { TechCardColor } from "../../components/TechCard/types";
 import { projects } from "../../data/projects";
 import { experiences } from "../../data/experiences";
-import { useState } from "react";
 
 const Home = () => {
   const [showAllExperiences, setShowAllExperiences] = useState(false);
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
 
-  const displayedExperiences = showAllExperiences
-    ? experiences
-    : experiences.slice(0, 3);
-  const hasMoreExperiences = experiences.length > 3;
+  const experienceInitialCount = 1;
+  const hasMoreExperiences = experiences.length > experienceInitialCount;
+
+  const calculateMonthsDuration = (start: Date, end: Date | null) => {
+    const endDate = end || new Date(); // Use current date if end is null
+    const monthsDiff =
+      (endDate.getFullYear() - start.getFullYear()) * 12 +
+      (endDate.getMonth() - start.getMonth());
+
+    const dayDiff = endDate.getDate() - start.getDate();
+    
+    return monthsDiff + (dayDiff > 0 ? 1 : 0);
+  };
 
   return (
     <div className={styles.home}>
@@ -145,38 +155,112 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>Experience</h2>
           <div className={styles.experienceList}>
-            {displayedExperiences.map((exp) => (
-              <div key={exp.company} className={styles.experienceCard}>
-                <h3>{exp.company}</h3>
-                <h4>{exp.position}</h4>
-                <p>{exp.description}</p>
+            {/* Initial list */}
+            {experiences.slice(0, experienceInitialCount).map((experiences) => (
+              <div key={experiences.company} className={styles.experienceCard}>
+                <h3>{experiences.company}</h3>
+                <h4>{experiences.position}</h4>
+                <p>{experiences.description}</p>
                 <p>
                   <strong>Duration:</strong>{" "}
-                  {exp.duration.start.toLocaleDateString("en-US", {
+                  {experiences.duration.start.toLocaleDateString("en-US", {
                     month: "long",
                     year: "numeric",
                   })}{" "}
                   -{" "}
-                  {exp.duration.end
-                    ? exp.duration.end.toLocaleDateString("en-US", {
+                  {experiences.duration.end
+                    ? experiences.duration.end.toLocaleDateString("en-US", {
                         month: "long",
                         year: "numeric",
                       })
-                    : "Present"}
+                    : "Present"}{" "}
+                  (
+                  {calculateMonthsDuration(
+                    experiences.duration.start,
+                    experiences.duration.end
+                  )}{" "}
+                  months)
                 </p>
-                {exp.relatedProjects && exp.relatedProjects.length > 0 && (
-                  <p>
-                    <strong>Related projects:</strong>{" "}
-                    {exp.relatedProjects.join(", ")}
-                  </p>
-                )}
+                {experiences.relatedProjects &&
+                  experiences.relatedProjects.length > 0 && (
+                    <p>
+                      <strong>Related projects:</strong>{" "}
+                      {experiences.relatedProjects.join(", ")}
+                    </p>
+                  )}
               </div>
             ))}
+            {/* Revealed list */}
+            <motion.div
+              className={styles.revealedExperienceList}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{
+                height: showAllExperiences ? "auto" : 0,
+                opacity: showAllExperiences ? 1 : 0,
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              style={{
+                overflow: "hidden",
+                margin: "-10px -10px",
+                padding: "10px 10px",
+              }}
+            >
+              {experiences
+                .slice(experienceInitialCount)
+                .map((experiences, index) => (
+                  <motion.div
+                    key={experiences.company}
+                    className={styles.experienceCard}
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <h3>{experiences.company}</h3>
+                    <h4>{experiences.position}</h4>
+                    <p>{experiences.description}</p>
+                    <p>
+                      <strong>Duration:</strong>{" "}
+                      {experiences.duration.start.toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
+                      })}{" "}
+                      -{" "}
+                      {experiences.duration.end
+                        ? experiences.duration.end.toLocaleDateString("en-US", {
+                            month: "long",
+                            year: "numeric",
+                          })
+                        : "Present"}{" "}
+                      (
+                      {calculateMonthsDuration(
+                        experiences.duration.start,
+                        experiences.duration.end
+                      )}{" "}
+                      months)
+                    </p>
+                    {experiences.relatedProjects &&
+                      experiences.relatedProjects.length > 0 && (
+                        <p>
+                          <strong>Related projects:</strong>{" "}
+                          {experiences.relatedProjects.join(", ")}
+                        </p>
+                      )}
+                  </motion.div>
+                ))}
+            </motion.div>
           </div>
+          {/* Show More button */}
           {hasMoreExperiences && (
             <button
               className={`buttonLink ${styles.buttonLink}`}
               onClick={() => setShowAllExperiences(!showAllExperiences)}
+              style={{
+                marginTop: showAllExperiences ? "20px" : undefined,
+              }}
             >
               {showAllExperiences ? "Show Less" : "Show More"}
             </button>
