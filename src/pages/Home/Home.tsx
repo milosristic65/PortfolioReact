@@ -32,7 +32,7 @@ const Home = () => {
       (endDate.getMonth() - start.getMonth());
 
     const dayDiff = endDate.getDate() - start.getDate();
-    
+
     return monthsDiff + (dayDiff > 0 ? 1 : 0);
   };
 
@@ -203,6 +203,7 @@ const Home = () => {
                 overflow: "hidden",
                 margin: "-10px -10px",
                 padding: "10px 10px",
+                pointerEvents: showAllExperiences ? "auto" : "none",
               }}
             >
               {experiences
