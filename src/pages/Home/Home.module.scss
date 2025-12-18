@@ -75,6 +75,16 @@
   }
 }
 
+.aboutSection {
+  h2 {
+    display: inline-block;
+    padding: 5px;
+    color: $background-color;
+    background-color: $text-color;
+    border-radius: $input-radius;
+  }
+}
+
 .techStackSection {
   border-radius: $input-radius;
 

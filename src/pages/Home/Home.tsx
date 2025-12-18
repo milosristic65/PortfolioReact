@@ -64,7 +64,7 @@ const Home = () => {
         </div>
       </div>
 
-      <section>
+      <section className={styles.aboutSection}>
         <div className={`content ${styles.content}`}>
           <h2>About Me</h2>
           <p>
