@@ -5,7 +5,7 @@ footer {
   position: relative;
   color: $background-color;
   margin-top: 150px;
-  padding-top: 10px;
+  padding-top: 40px;
   overflow: hidden;
 
   .footerInside {
@@ -26,7 +26,7 @@ footer {
   &::before {
     content: "";
     position: absolute;
-    top: 10px;
+    top: 40px;
     left: -5px;
     right: -5px;
     bottom: 40%;
