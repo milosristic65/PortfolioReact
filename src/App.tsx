@@ -3,10 +3,17 @@ import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  });
+
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header />
         <main>
