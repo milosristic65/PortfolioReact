@@ -1,11 +1,21 @@
-import { useEffect, useRef } from "react";
 import styles from "./Footer.module.scss";
+
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+
 import { socials } from "../../data/socials";
 
 const Footer = () => {
   const footerRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
+    // Remove visible class when path changes
+    if (footerRef.current) {
+      footerRef.current.classList.remove(styles.visible);
+      console.log("Path changed, removed visible class from footer.");
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && footerRef.current) {
@@ -23,7 +33,7 @@ const Footer = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <footer ref={footerRef}>
