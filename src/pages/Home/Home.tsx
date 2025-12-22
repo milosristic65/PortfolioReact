@@ -45,14 +45,16 @@ const Home = () => {
           </p>
         </div>
         <div
-          ref={bannerBackgroundRef}
           className={`${styles.bannerPortraitWrapper}`}
+          ref={bannerBackgroundRef}
         >
-          <img
-            src={bannerImage}
-            className={styles.bannerPortrait}
-            alt="Milos Ristic portrait"
-          />
+          <div className={`${styles.bannerPortraitBackground}`}>
+            <img
+              src={bannerImage}
+              className={styles.bannerPortrait}
+              alt="Milos Ristic portrait"
+            />
+          </div>
         </div>
         <div ref={bannerLogosRef} className={styles.bannerLogos}>
           <img src={reactLogo} alt="React Logo" />
