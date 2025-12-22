@@ -64,15 +64,15 @@ const Home = () => {
 
       <section className={styles.aboutSection}>
         <div className={`content ${styles.content}`}>
-          <h2>About Me</h2>
+          <h2>What I Do</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
-            architecto eum similique temporibus aut id nulla! Architecto dolores
-            iusto nesciunt ipsa, nobis excepturi laboriosam odio est. Illum,
-            vitae dolor. Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Fugiat nostrum, obcaecati quidem ullam provident dolorum ipsa
-            corporis, earum consectetur praesentium veniam dolores ratione,
-            sequi reprehenderit quos error molestiae aperiam accusantium?
+            I focus on <span className="highlight">backend logic</span>,{" "}
+            <span className="highlight"> data modeling</span>, and building
+            maintainable systems, while also creating{" "}
+            <span className="highlight"> modern, responsive frontends</span> and
+            integration layers to deliver complete solutions. By day I work on
+            production systems, and in my free time I explore creativity through{" "}
+            game development.
           </p>
         </div>
       </section>
