@@ -4,18 +4,16 @@ import { motion } from "motion/react";
 
 import bannerImage from "../../assets/portrait_color.png";
 import reactLogo from "../../assets/TechStack/react.svg";
-import jqueryLogo from "../../assets/TechStack/jquery.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
 import drupalLogo from "../../assets/TechStack/drupal.svg";
-import mysqlLogo from "../../assets/TechStack/mysql.svg";
-import sqlserverLogo from "../../assets/TechStack/sqlserver.svg";
 
 import TechCard from "../../components/TechCard/TechCard";
 import { useParallax } from "../../hooks/useParallax";
-import { TechCardColor } from "../../components/TechCard/types";
+
 import { projects } from "../../data/projects";
 import { experiences } from "../../data/experiences";
+import { technologies } from "../../data/technologies";
 
 const Home = () => {
   const [showAllExperiences, setShowAllExperiences] = useState(false);
@@ -83,46 +81,15 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>Tech Stack</h2>
           <div className={styles.techStackGrid}>
-            <TechCard
-              title="PHP"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={phpLogo}
-              color={TechCardColor.BLUE}
-            />
-            <TechCard
-              title="Drupal"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={drupalLogo}
-              color={TechCardColor.CYAN}
-            />
-            <TechCard
-              title="React"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={reactLogo}
-              color={TechCardColor.CYAN}
-            />
-            <TechCard
-              title="jQuery"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={jqueryLogo}
-              color={TechCardColor.BLUE}
-            />
-            <TechCard
-              title=".NET"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={dotnetLogo}
-              color={TechCardColor.GREEN}
-            />
-            <TechCard
-              title="MySQL"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={mysqlLogo}
-            />
-            <TechCard
-              title="Microsoft SQL Server"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              logo={sqlserverLogo}
-            />
+            {technologies.map((tech) => (
+              <TechCard
+                key={tech.name}
+                title={tech.name}
+                description={tech.snippet}
+                logo={tech.icon!}
+                color={tech.color}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -139,7 +106,7 @@ const Home = () => {
                     <img src={project.thumbnail} alt={project.title} />
                     <div className={styles.projectInfo}>
                       <h3>{project.title}</h3>
-                      <p>{project.description}</p>
+                      <p>{project.snippet}</p>
                     </div>
                   </div>
                 </a>

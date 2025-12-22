@@ -5,6 +5,7 @@ import fermicodingThumb from "../assets/Projects/Fermicoding/FermicodingThumbnai
 export interface Project {
   title: string;
   description: string;
+  snippet: string;
   thumbnail: string;
   screenshots: string[];
   technologies: string[];
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     title: "Easy Kitchen Lab",
     description:
       "Full-stack e-commerce solution built with React, PHP, and MySQL. Features user authentication, shopping cart, and payment integration.",
+    snippet: "E-commerce platform for kitchen appliances.",
     thumbnail: easyKitchenThumb,
     screenshots: [],
     technologies: ["React", "PHP", "MySQL", "Stripe API"],
@@ -28,7 +30,8 @@ export const projects: Project[] = [
   {
     title: "Fermicoding",
     description:
-      "Fermicoding official website.",
+      "Full-stack website for coding tutorials and resources. Built with React, PHP, and MySQL. Features user authentication and content management.",
+    snippet: "Official website for Fermicoding.",
     thumbnail: fermicodingThumb,
     screenshots: [],
     technologies: ["React", "PHP", "MySQL", "Stripe API"],
@@ -40,6 +43,7 @@ export const projects: Project[] = [
     title: "Taglient Games",
     description:
       "Custom CMS built with .NET Core and React. Includes role-based permissions, content scheduling, and SEO optimization.",
+    snippet: "Content management system for gaming website.",
     thumbnail: taglientThumb,
     screenshots: [],
     technologies: [".NET Core", "React", "SQL Server"],
