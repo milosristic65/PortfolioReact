@@ -123,8 +123,7 @@ footer {
 
       &:hover {
         transform: scale(1.04);
-        filter: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
-          drop-shadow(0 0 20px rgba(9, 173, 238, 0.4));
+        filter: $div-shadow;
       }
 
       &:focus {

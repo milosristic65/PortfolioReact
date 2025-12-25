@@ -325,6 +325,12 @@
         border-radius: $input-radius;
       }
 
+      &.lastExperience {
+        h3 {
+          filter: $div-shadow;
+        }
+      }
+
       h4 {
         padding: 5px;
       }

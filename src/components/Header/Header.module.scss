@@ -49,8 +49,7 @@
       &:hover {
         transform: scale(1.05);
         background-color: color.adjust($color: $text-color, $lightness: 5%);
-        filter: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
-          drop-shadow(0 0 20px rgba(9, 173, 238, 0.4));
+        filter: $div-shadow;
       }
     }
   }

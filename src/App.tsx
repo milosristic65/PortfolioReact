@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { useEffect } from "react";
+import { ROUTES } from "./config/routes";
 
 function App() {
   useEffect(() => {
@@ -18,8 +19,8 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.CONTACT} element={<Contact />} />
           </Routes>
         </main>
         <Footer />

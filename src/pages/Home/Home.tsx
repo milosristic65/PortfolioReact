@@ -2,6 +2,9 @@ import styles from "./Home.module.scss";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { addDays, intervalToDuration } from "date-fns";
+import slugify from "slugify";
+
+import { ROUTES } from "../../config/routes";
 
 import bannerImage from "../../assets/portrait_color.png";
 import reactLogo from "../../assets/TechStack/react.svg";
@@ -135,7 +138,9 @@ const Home = () => {
             {projects
               .filter((project) => project.featured === true)
               .map((project) => (
-                <a href="">
+                <a
+                  href={`${ROUTES.PROJECTS}/${slugify(project.title, { lower: true })}`}
+                >
                   <div key={project.title} className={styles.projectCard}>
                     <img src={project.thumbnail} alt={project.title} />
                     <div className={styles.projectInfo}>
@@ -146,7 +151,7 @@ const Home = () => {
                 </a>
               ))}
           </div>
-          <a className={`buttonLink ${styles.buttonLink}`} href="/projects">
+          <a className={`buttonLink ${styles.buttonLink}`} href={ROUTES.PROJECTS}>
             All Projects
           </a>
         </div>
@@ -155,42 +160,64 @@ const Home = () => {
       <section className={styles.experienceSection}>
         <div className={`content ${styles.content}`}>
           <h2>Experience</h2>
-          <div className={styles.experienceList}>
+          <div className={`${styles.experienceList} ${styles.initialList}`}>
             {/* Initial list */}
-            {experiences.slice(0, experienceInitialCount).map((experiences) => (
-              <div key={experiences.company} className={styles.experienceCard}>
-                <h3>{experiences.company}</h3>
-                <h4>{experiences.position}</h4>
-                <p>{experiences.description}</p>
-                <p>
-                  <strong>Duration:</strong>{" "}
-                  {experiences.duration.start.toLocaleDateString("en-US", {
-                    month: "long",
-                    year: "numeric",
-                  })}{" "}
-                  -{" "}
-                  {experiences.duration.end
-                    ? experiences.duration.end.toLocaleDateString("en-US", {
-                        month: "long",
-                        year: "numeric",
-                      })
-                    : "Present"}{" "}
-                  (
-                  {calculateDuration(
-                    experiences.duration.start,
-                    experiences.duration.end
-                  )}
-                  )
-                </p>
-                {experiences.relatedProjects &&
-                  experiences.relatedProjects.length > 0 && (
-                    <p>
-                      <strong>Related projects:</strong>{" "}
-                      {experiences.relatedProjects.join(", ")}
-                    </p>
-                  )}
-              </div>
-            ))}
+            {experiences
+              .slice(0, experienceInitialCount)
+              .map((experiences, index) => (
+                <div
+                  key={experiences.company}
+                  className={`${styles.experienceCard} ${
+                    index === 0 ? styles.lastExperience : ""
+                  }`}
+                >
+                  <h3>{experiences.company}</h3>
+                  <h4 className="highlight">{experiences.position}</h4>
+                  <p>{experiences.description}</p>
+                  <p>
+                    <strong>Duration:</strong>{" "}
+                    {experiences.duration.start.toLocaleDateString("en-US", {
+                      month: "long",
+                      year: "numeric",
+                    })}{" "}
+                    -{" "}
+                    {experiences.duration.end
+                      ? experiences.duration.end.toLocaleDateString("en-US", {
+                          month: "long",
+                          year: "numeric",
+                        })
+                      : "Present"}{" "}
+                    <span className="highlight">
+                      (
+                      {calculateDuration(
+                        experiences.duration.start,
+                        experiences.duration.end
+                      )}
+                      )
+                    </span>
+                  </p>
+                  {experiences.relatedProjects &&
+                    experiences.relatedProjects.length > 0 && (
+                      <p>
+                        <strong>Related projects:</strong>{" "}
+                        {experiences.relatedProjects.map((project, index) => (
+                          <span key={project}>
+                            <a
+                              href={`${ROUTES.PROJECTS}/${slugify(project, {
+                                lower: true,
+                              })}`}
+                            >
+                              {project}
+                            </a>
+                            {index < experiences.relatedProjects!.length - 1
+                              ? ", "
+                              : ""}
+                          </span>
+                        ))}
+                      </p>
+                    )}
+                </div>
+              ))}
             {/* Revealed list */}
             <motion.div
               ref={revealedExperiencesRef}
@@ -223,7 +250,7 @@ const Home = () => {
                     }}
                   >
                     <h3>{experiences.company}</h3>
-                    <h4>{experiences.position}</h4>
+                    <h4 className="highlight">{experiences.position}</h4>
                     <p>{experiences.description}</p>
                     <p>
                       <strong>Duration:</strong>{" "}
@@ -238,18 +265,33 @@ const Home = () => {
                             year: "numeric",
                           })
                         : "Present"}{" "}
-                      (
-                      {calculateDuration(
-                        experiences.duration.start,
-                        experiences.duration.end
-                      )}
-                      )
+                      <span className="highlight">
+                        (
+                        {calculateDuration(
+                          experiences.duration.start,
+                          experiences.duration.end
+                        )}
+                        )
+                      </span>
                     </p>
                     {experiences.relatedProjects &&
                       experiences.relatedProjects.length > 0 && (
                         <p>
                           <strong>Related projects:</strong>{" "}
-                          {experiences.relatedProjects.join(", ")}
+                          {experiences.relatedProjects.map((project, index) => (
+                            <span key={project}>
+                              <a
+                                href={`${ROUTES.PROJECTS}/${slugify(project, {
+                                  lower: true,
+                                })}`}
+                              >
+                                {project}
+                              </a>
+                              {index < experiences.relatedProjects!.length - 1
+                                ? ", "
+                                : ""}
+                            </span>
+                          ))}
                         </p>
                       )}
                   </motion.div>

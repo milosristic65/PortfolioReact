@@ -2,6 +2,7 @@ import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { ROUTES } from "../../config/routes";
 
 function Header() {
   const location = useLocation();
@@ -36,14 +37,14 @@ function Header() {
       <div className={styles.headerContent}>
         <div className={styles.logo}>Logo</div>
         <nav className={styles.nav}>
-          <Link to="/" className={styles.navLink}>
+          <Link to={ROUTES.HOME} className={styles.navLink}>
             Home
           </Link>
-          <Link to="/projects" className={styles.navLink}>
+          <Link to={ROUTES.PROJECTS} className={styles.navLink}>
             Projects
           </Link>
           <Link
-            to="/contact"
+            to={ROUTES.CONTACT}
             className={`${styles.navLink} ${styles.contactButton}`}
           >
             Get in Contact
