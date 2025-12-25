@@ -1,6 +1,7 @@
 import styles from "./Home.module.scss";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
+import { addDays, intervalToDuration } from "date-fns";
 
 import bannerImage from "../../assets/portrait_color.png";
 import reactLogo from "../../assets/TechStack/react.svg";
@@ -36,19 +37,30 @@ const Home = () => {
     if (!revealedExperiencesRef.current) return;
 
     requestAnimationFrame(() => {
-      setHeight(showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0);
+      setHeight(
+        showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0
+      );
     });
   }, [showAllExperiences]);
 
-  const calculateMonthsDuration = (start: Date, end: Date | null) => {
-    const endDate = end || new Date(); // Use current date if end is null
-    const monthsDiff =
-      (endDate.getFullYear() - start.getFullYear()) * 12 +
-      (endDate.getMonth() - start.getMonth());
+  const calculateDuration = (start: Date, end?: Date | null) => {
+    start = addDays(start, -1);
+    const duration = intervalToDuration({ start, end: end || new Date() });
+    const years: number = duration.years ?? 0;
+    const months: number = duration.months ?? 0;
+    const days: number = duration.days ?? 0;
 
-    const dayDiff = endDate.getDate() - start.getDate();
+    const parts = [];
+    if (years) {
+      parts.push(`${years} year${years > 1 ? "s" : ""}`);
+      if (months > 0) parts.push(`${months} month${months! > 1 ? "s" : ""}`);
+    } else if (months) {
+      parts.push(`${months} month${months > 1 ? "s" : ""}`);
+    } else {
+      parts.push(`${days} day${days! > 1 ? "s" : ""}`);
+    }
 
-    return monthsDiff + (dayDiff > 0 ? 1 : 0);
+    return parts.join(", ");
   };
 
   return (
@@ -164,11 +176,11 @@ const Home = () => {
                       })
                     : "Present"}{" "}
                   (
-                  {calculateMonthsDuration(
+                  {calculateDuration(
                     experiences.duration.start,
                     experiences.duration.end
-                  )}{" "}
-                  months)
+                  )}
+                  )
                 </p>
                 {experiences.relatedProjects &&
                   experiences.relatedProjects.length > 0 && (
@@ -227,11 +239,11 @@ const Home = () => {
                           })
                         : "Present"}{" "}
                       (
-                      {calculateMonthsDuration(
+                      {calculateDuration(
                         experiences.duration.start,
                         experiences.duration.end
-                      )}{" "}
-                      months)
+                      )}
+                      )
                     </p>
                     {experiences.relatedProjects &&
                       experiences.relatedProjects.length > 0 && (
