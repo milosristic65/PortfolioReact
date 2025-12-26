@@ -184,6 +184,7 @@
   .buttonLink {
     margin-top: 15px;
     color: $text-color;
+    font-weight: inherit;
 
     &:hover {
       transform: scale(1.05);
@@ -199,6 +200,7 @@
 
     a {
       color: inherit;
+      font-weight: inherit;
     }
 
     $projectTitleFontSize: 22px;

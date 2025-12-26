@@ -34,10 +34,12 @@
     text-decoration: none;
     border-radius: $input-radius;
     padding: 6px 9px;
+    font-weight: inherit;
     transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
+      color: inherit;
     }
 
     &.contactButton {

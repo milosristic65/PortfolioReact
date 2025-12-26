@@ -24,6 +24,17 @@ main {
   min-height: 90vh;
 }
 
+a {
+  color: $primary-color;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: color.adjust($color: $primary-color, $lightness: -20%);
+  }
+}
+
 .content {
   max-width: $content-width;
   padding: $content-padding;
