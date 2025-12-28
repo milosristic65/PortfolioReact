@@ -26,4 +26,131 @@
       font-size: 1.5rem;
     }
   }
+
+  .bannerHeroWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    height: calc(100%);
+    -webkit-user-drag: none;
+    pointer-events: none;
+
+    .bannerHeroBackground {
+      height: 60%;
+      width: 100%;
+      opacity: 0;
+      animation: bannerSlideIn 0.6s ease forwards;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -65%;
+        right: -200%;
+        bottom: -100%;
+        background-color: $primary-color;
+        z-index: 0;
+      }
+
+      .bannerHero {
+        position: relative;
+        bottom: -70%;
+        right: 80%;
+        height: 100%;
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        z-index: 1;
+
+        opacity: 0;
+        animation: portraitSlideIn 0.8s ease forwards 0.4s;
+      }
+    }
+  }
+}
+
+@keyframes bannerSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(220%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portraitSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contactFormSection {
+  .contactText {
+    p {
+      font-size: $bigger-normal-text;
+      padding-top: 40px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+    .contactForm {
+      position: relative;
+      border-radius: $input-radius;
+      padding: 30px;
+      width: 90%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: rotate(-1deg);
+        z-index: -1;
+        background-color: $primary-color;
+      }
+
+      button {
+        background-color: $text-color;
+
+        &:hover {
+          background-color: color.adjust($color: $text-color, $lightness: 15%);
+        }
+      }
+      input,
+      textarea {
+        background-color: $accent-color;
+        &:focus {
+          outline: 3px solid $text-color;
+        }
+      }
+
+      textarea {
+        min-height: 200px;
+        resize: none;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      margin: 0 auto;
+
+      .contactForm {
+        padding: 20px;
+      }
+    }
+  }
 }

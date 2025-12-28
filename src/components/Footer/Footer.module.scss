@@ -7,6 +7,10 @@ footer {
   margin-top: 100px;
   overflow: hidden;
 
+  h3 {
+    margin-bottom: 30px;
+  }
+
   .footerBackground {
     background-color: $text-color;
     position: absolute;
@@ -68,55 +72,10 @@ footer {
   }
 
   .contactForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     max-width: 500px;
     width: 100%;
     padding: 0;
     margin-bottom: 80px;
-
-    input,
-    textarea {
-      border-radius: $input-radius;
-      border: none;
-      padding: 10px;
-      box-sizing: border-box;
-      width: 100%;
-      font-family: inherit;
-      transition: outline 0.1s ease;
-
-      &::placeholder {
-        font-weight: bold;
-      }
-
-      &:focus {
-        outline: 3px solid $primary-color;
-      }
-    }
-
-    textarea {
-      min-height: 50px;
-      min-width: 100px;
-      max-width: 1000px;
-    }
-
-    button {
-      border-radius: $input-radius;
-      width: 100px;
-      line-height: 25px;
-      align-self: flex-end;
-      font-weight: bold;
-
-      &:hover {
-        transform: scale(1.04);
-        filter: $div-shadow;
-      }
-
-      &:focus {
-        outline: 3px solid $background-color;
-      }
-    }
   }
 
   .socials {

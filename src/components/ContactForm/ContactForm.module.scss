@@ -1,0 +1,45 @@
+@use "../../styles/variables" as *;
+@use "sass:color";
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  input,
+  textarea {
+    border-radius: $input-radius;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: inherit;
+    transition: outline 0.1s ease;
+
+    &::placeholder {
+      font-weight: bold;
+    }
+
+    &:focus {
+      outline: 3px solid $primary-color;
+    }
+  }
+
+  textarea {
+    min-height: 50px;
+    min-width: 100px;
+  }
+
+  button {
+    border-radius: $input-radius;
+    width: 100px;
+    line-height: 25px;
+    align-self: flex-end;
+    font-weight: bold;
+
+    &:hover {
+      transform: scale(1.04);
+      filter: $div-shadow;
+    }
+  }
+}

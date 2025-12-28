@@ -1,9 +1,15 @@
 import styles from "./Footer.module.scss";
 import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 import { socials } from "../../data/socials";
+import { ROUTES } from "../../config/routes";
+import { useLocation } from "react-router-dom";
+
+import ContactForm from "../ContactForm/ContactForm";
 
 const Footer = () => {
   const footerRef = useInViewAnimation(styles.visible, 0.3);
+  const { pathname } = useLocation();
+  const contactFormPages = [ROUTES.HOME];
 
   return (
     <footer ref={footerRef}>
@@ -12,19 +18,16 @@ const Footer = () => {
       >
         <div className={styles.footerBackground}></div>
         <div className={`content ${styles.content}`}>
-          <h3 className={styles.branding}>
-            Got a Project in Mind? <strong className="highlight">Let's Talk :)</strong>
-          </h3>
-
-          <form
-            className={styles.contactForm}
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
-            <textarea rows={4} placeholder="Message" required />
-            <button type="submit">Send</button>
-          </form>
+          {contactFormPages.includes(pathname) && (
+            <>
+              {" "}
+              <h3 className={styles.branding}>
+                Got a Project in Mind?{" "}
+                <strong className="highlight">Let's Talk :)</strong>
+              </h3>
+              <ContactForm className={styles.contactForm} />
+            </>
+          )}
 
           <ul className={styles.socials}>
             {socials.map((social) => (

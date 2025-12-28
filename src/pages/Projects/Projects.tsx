@@ -46,10 +46,10 @@ const Projects = () => {
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Projects</h1>
-          <p>From experiments to <span className="highlight">client work</span></p>
-          <div
-            className={`${styles.bannerHeroWrapper}`}
-          >
+          <p>
+            From experiments to <span className="highlight">client work</span>.
+          </p>
+          <div className={`${styles.bannerHeroWrapper}`}>
             <div className={`${styles.bannerHeroBackground}`}>
               <img
                 src={bannerImage}
@@ -60,6 +60,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
       <section className={styles.projectsSection}>
         <div className={`content ${styles.content}`}>
           <div className={styles.filters}>

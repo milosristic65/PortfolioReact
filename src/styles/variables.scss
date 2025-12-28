@@ -10,15 +10,17 @@ $div-shadow: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
   drop-shadow(0 0 20px rgba(108, 9, 238, 0.4));
 
 // Structure
-$content-width: 1200px;
+$content-width: 1280px;
 $content-padding: 30px 20px;
-$header-width: 1200px;
+$header-width: 1280px;
 $header-height: 60px;
 
 // Radius
 $input-radius: 2px;
 
+$bigger-normal-text: 1.25rem;
+
 // Screens
-$desktop: 1200px;
+$desktop: 1280px;
 $tablet: 900px;
 $mobile: 600px;
