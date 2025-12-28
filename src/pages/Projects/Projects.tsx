@@ -4,6 +4,8 @@ import { useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Dropdown, { type OptionType } from "../../components/Dropdown/Dropdown";
 
+import bannerImage from "../../assets/Banner/undraw_programming.svg";
+
 import { projects } from "../../data/projects";
 import { technologies } from "../../data/technologies";
 import { industries } from "../../data/industries";
@@ -44,7 +46,18 @@ const Projects = () => {
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Projects</h1>
-          <p>Look at what I made!</p>
+          <p>From experiments to <span className="highlight">client work</span></p>
+          <div
+            className={`${styles.bannerHeroWrapper}`}
+          >
+            <div className={`${styles.bannerHeroBackground}`}>
+              <img
+                src={bannerImage}
+                className={styles.bannerHero}
+                alt="Projects Hero"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <section className={styles.projectsSection}>

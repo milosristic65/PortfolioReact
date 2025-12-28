@@ -7,7 +7,7 @@ import slugify from "slugify";
 
 import { ROUTES } from "../../config/routes";
 
-import bannerImage from "../../assets/portrait_color.png";
+import bannerImage from "../../assets/Banner/portrait.png";
 import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
@@ -79,13 +79,13 @@ const Home = () => {
           </p>
         </div>
         <div
-          className={`${styles.bannerPortraitWrapper}`}
+          className={`${styles.bannerHeroWrapper}`}
           ref={bannerBackgroundRef}
         >
-          <div className={`${styles.bannerPortraitBackground}`}>
+          <div className={`${styles.bannerHeroBackground}`}>
             <img
               src={bannerImage}
-              className={styles.bannerPortrait}
+              className={styles.bannerHero}
               alt="Milos Ristic portrait"
             />
           </div>
