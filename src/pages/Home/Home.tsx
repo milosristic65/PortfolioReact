@@ -27,6 +27,18 @@ const Home = () => {
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
 
+  // Tech Stack //
+  const technologiesWithProjectCount = technologies.map((tech) => {
+    const count = projects.filter((project) =>
+      project.technologies?.includes(tech.name)
+    ).length;
+
+    return {
+      ...tech,
+      projectCount: count,
+    };
+  });
+
   // Featured projects //
   const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
 
@@ -117,15 +129,17 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>Tech Stack</h2>
           <div className={styles.techStackGrid}>
-            {technologies.map((tech) => (
-              <TechCard
-                key={tech.name}
-                title={tech.name}
-                description={tech.snippet}
-                logo={tech.icon!}
-                color={tech.color}
-              />
-            ))}
+            {technologiesWithProjectCount
+              .filter((tech) => tech.projectCount > 0)
+              .map((tech) => (
+                <TechCard
+                  key={tech.name}
+                  title={tech.name}
+                  projectCount={tech.projectCount}
+                  logo={tech.icon!}
+                  color={tech.color}
+                />
+              ))}
           </div>
         </div>
       </section>
