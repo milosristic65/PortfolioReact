@@ -36,6 +36,7 @@
     line-height: 25px;
     align-self: flex-end;
     font-weight: bold;
+    transition: transform 0.3s ease, filter 0.3s ease;
 
     &:hover {
       transform: scale(1.04);
