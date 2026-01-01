@@ -30,7 +30,7 @@ const Home = () => {
   // Tech Stack //
   const technologiesWithProjectCount = technologies.map((tech) => {
     const count = projects.filter((project) =>
-      project.technologies?.includes(tech.name)
+      project.technologies?.includes(tech.value)
     ).length;
 
     return {
@@ -135,6 +135,7 @@ const Home = () => {
                 <TechCard
                   key={tech.name}
                   title={tech.name}
+                  value={tech.value}
                   projectCount={tech.projectCount}
                   logo={tech.icon!}
                   color={tech.color}

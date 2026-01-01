@@ -4,8 +4,8 @@ import Select, { type SingleValue } from "react-select";
 import { components } from "react-select";
 
 export interface OptionType {
-  value: string;
   label: string;
+  value: string;
 }
 
 interface DropdownProps {

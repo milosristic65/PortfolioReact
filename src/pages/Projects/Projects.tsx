@@ -1,6 +1,7 @@
 import styles from "./Projects.module.scss";
 
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Dropdown, { type OptionType } from "../../components/Dropdown/Dropdown";
 
@@ -11,20 +12,54 @@ import { technologies } from "../../data/technologies";
 import { industries } from "../../data/industries";
 
 const Projects = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const industryParam = searchParams.get("industry");
+  const techParam = searchParams.get("tech");
+
   const industryFilter = industries.map((industry) => ({
-    value: industry.name,
     label: industry.name,
+    value: industry.value,
   }));
 
   const technologyFilter = technologies.map((tech) => ({
-    value: tech.name,
     label: tech.name,
+    value: tech.value,
   }));
 
-  const [industryValue, setIndustryValue] = useState<OptionType | null>(null);
+  const [industryValue, setIndustryValue] = useState<OptionType | null>(() => {
+    return industryFilter.find((o) => o.value === industryParam) ?? null;
+  });
   const [technologyValue, setTechnologyValue] = useState<OptionType | null>(
-    null
+    () => {
+      return technologyFilter.find((o) => o.value === techParam) ?? null;
+    }
   );
+
+  const onIndustryChange = (option: OptionType | null) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+
+      if (option) next.set("industry", option.value);
+      else next.delete("industry");
+
+      return next;
+    });
+
+    setIndustryValue(option);
+  };
+
+  const onTechnologyChange = (option: OptionType | null) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+
+      if (option) next.set("tech", option.value);
+      else next.delete("tech");
+
+      return next;
+    });
+
+    setTechnologyValue(option);
+  };
 
   const filteredProjects = projects.filter(
     (project) =>
@@ -70,13 +105,13 @@ const Projects = () => {
                 options={industryFilter}
                 placeholder="Industry"
                 value={industryValue}
-                onChange={setIndustryValue}
+                onChange={onIndustryChange}
               />
               <Dropdown
                 options={technologyFilter}
                 placeholder="Technology"
                 value={technologyValue}
-                onChange={setTechnologyValue}
+                onChange={onTechnologyChange}
               />
             </div>
             <div

@@ -23,9 +23,16 @@ $cardTransiton: 0.3s;
     user-select: none;
     z-index: 1;
   }
+
   p {
     position: relative;
     z-index: 1;
+  }
+
+  a,
+  a:hover {
+    color: inherit;
+    font-weight: inherit;
   }
 
   img {
