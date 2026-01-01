@@ -74,6 +74,7 @@ const Projects = () => {
   const clearFilters = () => {
     setIndustryValue(null);
     setTechnologyValue(null);
+    setSearchParams();
   };
 
   return (
