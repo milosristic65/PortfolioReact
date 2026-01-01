@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
 import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import Contact from "./pages/Contact/Contact";
+import NotFound from "./pages/NotFound/NotFound";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -27,6 +28,7 @@ function App() {
             <Route path={ROUTES.PROJECTS} element={<Projects />} />
             <Route path={ROUTES.PROJECT_DETAILS} element={<ProjectDetails />} />
             <Route path={ROUTES.CONTACT} element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
