@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
+import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import Contact from "./pages/Contact/Contact";
 
 import Header from "./components/Header/Header";
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path={ROUTES.HOME} element={<Home />} />
             <Route path={ROUTES.PROJECTS} element={<Projects />} />
+            <Route path={ROUTES.PROJECT_DETAILS} element={<ProjectDetails />} />
             <Route path={ROUTES.CONTACT} element={<Contact />} />
           </Routes>
         </main>
